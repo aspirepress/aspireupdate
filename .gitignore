@@ -3,7 +3,7 @@
 # Files and folders related to build and test tools.
 .phpunit.result.cache
 /phpunit.xml
-/vendor
+/vendor/*
 .cache/*
 /tests/phpunit/cache
 /tests/phpunit/coverage
@@ -11,3 +11,6 @@
 
 # Track placeholders so that empty directories stay in the repo.
 !.gitkeep
+
+# Decoupled translation updating.
+!/vendor/afragen

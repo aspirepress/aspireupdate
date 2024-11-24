@@ -1,0 +1,55 @@
+{
+  "name": "afragen/translations-updater",
+  "description": "This framework provides automatic decoupled languate pack updates from a public repository for your WordPress plugin or theme.",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.2.0",
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "theme",
+    "updater",
+    "language pack",
+    "translations"
+  ],
+  "authors": [
+    {
+      "name": "Andy Fragen",
+      "email": "andy@thefragens.com",
+      "homepage": "https://thefragens.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/afragen/translations-updater/issues",
+    "source": "https://github.com/afragen/translations-updater"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/afragen/translations-updater"
+    }
+  ],
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fragen\\Translations_Updater\\": "src/Translations_Updater/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "wpcs": [
+      "vendor/bin/phpcbf .; vendor/bin/phpcs ."
+    ]
+  }
+}

@@ -59,9 +59,9 @@ NOTE 2: Setting AP_REMOVE_UI to `true` removes the plugin user interface. This i
 
 ## WP Playgrounds Support
 
-The AspireUpdate current build ('main' branch) can be [experimented with in the WP Playground environment](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/aspirepress/AspireUpdate/refs/heads/main/assets/playground/blueprint.json).
+The AspireUpdate current build ('main' branch) can be [experimented with in the WP Playground environment](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/aspirepress/aspireupdate/refs/heads/main/assets/playground/blueprint.json).
 
-The AspireUpdate stable build ('playground-ready' branch) can be [tested with in the WP Playground environment](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/aspirepress/AspireUpdate/refs/heads/playground-ready/assets/playground/blueprint.json).
+The AspireUpdate stable build ('playground-ready' branch) can be [tested with in the WP Playground environment](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/aspirepress/aspireupdate/refs/heads/playground-ready/assets/playground/blueprint.json).
 
 ## Debug Logging
 

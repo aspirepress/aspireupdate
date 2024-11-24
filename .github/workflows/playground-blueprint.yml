@@ -9,7 +9,7 @@ on:
 
 jobs:
   update-blueprint:
-    if: github.repository == 'aspirepress/AspireUpdate'
+    if: github.repository == 'aspirepress/aspireupdate'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -43,4 +43,3 @@ jobs:
           fi
         env:
           name: ${{ env.name }}
-

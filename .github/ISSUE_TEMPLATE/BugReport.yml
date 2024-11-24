@@ -37,7 +37,7 @@ body:
       default: 0
     validations:
       required: true
- 
+
   - type: dropdown
     id: os
     attributes:
@@ -50,7 +50,7 @@ body:
         - Android
         - Linux
         - Other
- 
+
 
   - type: dropdown
     id: browsers
@@ -70,19 +70,19 @@ body:
     attributes:
       label: 'WordPress'
       description: 'The version of WordPress that your site uses.'
- 
+
   - type: input
     id: php
     attributes:
       label: 'PHP'
       description: 'The version of PHP your site runs on.'
-  
+
   - type: input
     id: server
     attributes:
       label: 'Server'
       description: 'The server your site runs on (apache, nginx, etc).'
-  
+
   - type: input
     id: database
     attributes:
@@ -94,19 +94,19 @@ body:
     attributes:
       label: 'Theme'
       description: 'The currently active theme.'
-  
+
   - type: input
     id: must_use_plugins
     attributes:
       label: 'Must-Use Plugins'
       description: 'A list of Must-Use Plugins.'
-  
+
   - type: input
     id: plugins
     attributes:
       label: 'Plugins'
       description: 'A list of active plugins.'
-    
+
 
 
   - type: textarea
@@ -140,9 +140,8 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow the AspirePress [Code of Conduct](https://github.com/aspirepress/AspireUpdate?tab=coc-ov-file). 
+      description: By submitting this issue, you agree to follow the AspirePress [Code of Conduct](https://github.com/aspirepress/aspireupdate?tab=coc-ov-file).
 
       options:
       - label: I agree to follow the Code of Conduct.
         required: true
-

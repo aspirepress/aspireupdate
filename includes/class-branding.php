@@ -94,9 +94,9 @@ class Branding {
 			case 'plugin-install-network':
 				$message = sprintf(
 					/* translators: 1: The name of the plugin, 2: The documentation URL. */
-					__( 'Your plugin updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'AspireUpdate' ),
+					__( 'Your plugin updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'aspireupdate' ),
 					'AspireUpdate',
-					__( 'https://docs.aspirepress.org/aspireupdate/', 'AspireUpdate' )
+					__( 'https://docs.aspirepress.org/aspireupdate/', 'aspireupdate' )
 				);
 				break;
 			case 'themes':
@@ -109,9 +109,9 @@ class Branding {
 			case 'theme-install-network':
 				$message = sprintf(
 					/* translators: 1: The name of the plugin, 2: The documentation URL. */
-					__( 'Your theme updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'AspireUpdate' ),
+					__( 'Your theme updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'aspireupdate' ),
 					'AspireUpdate',
-					__( 'https://docs.aspirepress.org/aspireupdate/', 'AspireUpdate' )
+					__( 'https://docs.aspirepress.org/aspireupdate/', 'aspireupdate' )
 				);
 				break;
 			case 'update-core':
@@ -122,9 +122,9 @@ class Branding {
 			case 'update-core-network':
 				$message = sprintf(
 					/* translators: 1: The name of the plugin, 2: The documentation URL. */
-					__( 'Your WordPress, plugin, theme and translation updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'AspireUpdate' ),
+					__( 'Your WordPress, plugin, theme and translation updates are now powered by <strong>%1$s</strong>. <a href="%2$s">Learn more</a>', 'aspireupdate' ),
 					'AspireUpdate',
-					__( 'https://docs.aspirepress.org/aspireupdate/', 'AspireUpdate' )
+					__( 'https://docs.aspirepress.org/aspireupdate/', 'aspireupdate' )
 				);
 				break;
 		}

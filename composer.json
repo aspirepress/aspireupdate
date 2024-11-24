@@ -1,5 +1,4 @@
 {
-
     "name": "aspirepress/aspire-update",
     "description": "Update plugins and themes for WordPress.",
     "type": "wordpress-plugin",
@@ -10,25 +9,30 @@
         }
     ],
     "require": {
-        "php": ">=7.4.0"
+        "php": ">=7.4.0",
+        "afragen/autoloader": "dev-master",
+        "afragen/translations-updater": "^1"
     },
     "require-dev": {
-
-		"squizlabs/php_codesniffer": "3.10.3",
-		"wp-coding-standards/wpcs": "~3.1.0",
+        "squizlabs/php_codesniffer": "3.10.3",
+        "wp-coding-standards/wpcs": "~3.1.0",
         "yoast/phpunit-polyfills": "^1.1.0"
     },
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	},
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "scripts": {
-		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
-		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary, source",
-        "test": [ "Composer\\Config::disableProcessTimeout", "@php ./vendor/phpunit/phpunit/phpunit" ],
-        "test:multisite": [ "Composer\\Config::disableProcessTimeout", "@php ./vendor/phpunit/phpunit/phpunit -c tests/phpunit/multisite.xml" ]
+        "format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
+        "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source",
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./vendor/phpunit/phpunit/phpunit"
+        ],
+        "test:multisite": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./vendor/phpunit/phpunit/phpunit -c tests/multisite.xml"
+        ]
     }
-
-
 }

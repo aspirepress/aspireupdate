@@ -18,9 +18,9 @@
  * Tested up to:      6.7
  * License:           GPLv2
  * License URI:       https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
- * Text Domain:       AspireUpdate
+ * Text Domain:       aspireupdate
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/aspirepress/AspireUpdate
+ * GitHub Plugin URI: https://github.com/aspirepress/aspireupdate
  * Primary Branch:    main
  */
 
@@ -57,4 +57,21 @@ function aspire_update_activation_hook() {
 function aspire_update_uninstall_hook() {
 	$admin_settings = AspireUpdate\Admin_Settings::get_instance();
 	$admin_settings->delete_all_settings();
+}
+
+// Load and start translations updater.
+add_action( 'init', 'aspireupdate_init_translations' );
+function aspireupdate_init_translations() {
+	require_once __DIR__ . '/vendor/afragen/autoloader/Autoloader.php';
+	new Fragen\Autoloader( [ 'Fragen\\Translations_Updater' => __DIR__ . '/vendor/afragen/translations-updater/src/Translations_Updater' ] );
+	$config = [
+		'git'       => 'github',
+		'type'      => 'plugin',
+		'slug'      => 'aspireupdate',
+		'version'   => AP_VERSION, // Current version of plugin|theme.
+		'languages' => 'https://github.com/aspirepress/aspireupdate-translations',
+		'branch'    => 'main',
+	];
+
+	( new \Fragen\Translations_Updater\Init() )->run( $config );
 }

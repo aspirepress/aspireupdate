@@ -82,7 +82,7 @@ class Debug {
 		$wp_filesystem = self::init_filesystem();
 		$file_path     = self::get_file_path();
 		if ( ! self::verify_filesystem( $wp_filesystem ) || ! $wp_filesystem->exists( $file_path ) || ! $wp_filesystem->is_readable( $file_path ) ) {
-			return new \WP_Error( 'not_readable', __( 'Error: Unable to read the log file.', 'AspireUpdate' ) );
+			return new \WP_Error( 'not_readable', __( 'Error: Unable to read the log file.', 'aspireupdate' ) );
 		}
 
 		$file_content = $wp_filesystem->get_contents_array( $file_path );
@@ -95,11 +95,11 @@ class Debug {
 			}
 		}
 		if ( '' === trim( $content ) ) {
-			$content = esc_html__( '*****Log file is empty.*****', 'AspireUpdate' );
+			$content = esc_html__( '*****Log file is empty.*****', 'aspireupdate' );
 		} elseif ( $limit < count( $file_content ) ) {
 			$content .= PHP_EOL . sprintf(
 				/* translators: 1: The number of lines at which the content was truncated. */
-				esc_html__( '*****Log truncated at %s lines.*****', 'AspireUpdate' ),
+				esc_html__( '*****Log truncated at %s lines.*****', 'aspireupdate' ),
 				$limit
 			);
 		}
@@ -115,7 +115,7 @@ class Debug {
 		$wp_filesystem = self::init_filesystem();
 		$file_path     = self::get_file_path();
 		if ( ! self::verify_filesystem( $wp_filesystem ) || ! $wp_filesystem->exists( $file_path ) || ! $wp_filesystem->is_writable( $file_path ) ) {
-			return new \WP_Error( 'not_accessible', __( 'Error: Unable to access the log file.', 'AspireUpdate' ) );
+			return new \WP_Error( 'not_accessible', __( 'Error: Unable to access the log file.', 'aspireupdate' ) );
 		}
 
 		$wp_filesystem->put_contents(

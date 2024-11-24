@@ -1,0 +1,28 @@
+{
+    "name": "afragen/autoloader",
+    "description": "PSR-4 style autoloader and classmap loader.",
+    "version": "3.0.0",
+    "type": "library",
+    "keywords": [
+        "autoload"
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/afragen/autoload"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Andy Fragen",
+            "email": "andy@thefragens.com",
+            "homepage": "https://thefragens.com",
+            "role": "Developer"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.6"
+    }
+}

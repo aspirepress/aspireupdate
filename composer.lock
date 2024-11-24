@@ -4,9 +4,103 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "ee8f3669b94f591108fa37dfcf3db475",
-    "packages": [],
+    "content-hash": "2d376331f9e6e6c82ad7397106adb6eb",
+    "packages": [
+        {
+            "name": "afragen/autoloader",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/afragen/autoloader.git",
+                "reference": "ec56498d42f0694d3ad1207a496bf69cbb0ebc2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/afragen/autoloader/zipball/ec56498d42f0694d3ad1207a496bf69cbb0ebc2f",
+                "reference": "ec56498d42f0694d3ad1207a496bf69cbb0ebc2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fragen",
+                    "email": "andy@thefragens.com",
+                    "homepage": "https://thefragens.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PSR-4 style autoloader and classmap loader.",
+            "keywords": [
+                "autoload"
+            ],
+            "support": {
+                "issues": "https://github.com/afragen/autoloader/issues",
+                "source": "https://github.com/afragen/autoloader/tree/master"
+            },
+            "time": "2024-11-10T22:55:51+00:00"
+        },
+        {
+            "name": "afragen/translations-updater",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/afragen/translations-updater.git",
+                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/afragen/translations-updater/zipball/c688e85eeef136f9cd7a4719db94ab0fc241601e",
+                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "wp-coding-standards/wpcs": "^3.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fragen\\Translations_Updater\\": "src/Translations_Updater/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fragen",
+                    "email": "andy@thefragens.com",
+                    "homepage": "https://thefragens.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This framework provides automatic decoupled languate pack updates from a public repository for your WordPress plugin or theme.",
+            "keywords": [
+                "language pack",
+                "plugin",
+                "theme",
+                "translations",
+                "updater",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/afragen/translations-updater/issues",
+                "source": "https://github.com/afragen/translations-updater"
+            },
+            "time": "2024-11-19T17:24:59+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -87,32 +181,31 @@
             "time": "2023-01-05T11:28:13+00:00"
         },
         {
-
             "name": "doctrine/instantiator",
-            "version": "1.5.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b"
+                "reference": "c6222283fa3f4ac679f8b9ced9a4e23f163e80d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/0a0fa9780f5d4e507415a065172d26a98d02047b",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
+                "reference": "c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^11",
+                "doctrine/coding-standard": "^11",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.16 || ^1",
-                "phpstan/phpstan": "^1.4",
-                "phpstan/phpstan-phpunit": "^1",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "vimeo/psalm": "^4.30 || ^5.4"
+                "phpbench/phpbench": "^1.2",
+                "phpstan/phpstan": "^1.9.4",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpunit/phpunit": "^9.5.27",
+                "vimeo/psalm": "^5.4"
             },
             "type": "library",
             "autoload": {
@@ -139,7 +232,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.5.0"
+                "source": "https://github.com/doctrine/instantiator/tree/2.0.0"
             },
             "funding": [
                 {
@@ -155,20 +248,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-30T00:15:36+00:00"
+            "time": "2022-12-30T00:23:10+00:00"
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c"
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +300,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.0"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
             },
             "funding": [
                 {
@@ -215,7 +308,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-12T14:39:25+00:00"
+            "time": "2024-11-08T17:47:46+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -394,7 +487,6 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
-
             "name": "phpcsstandards/phpcsextra",
             "version": "1.2.1",
             "source": {
@@ -561,7 +653,6 @@
             "time": "2024-05-20T13:34:27+00:00"
         },
         {
-
             "name": "phpunit/php-code-coverage",
             "version": "9.2.32",
             "source": {
@@ -1947,7 +2038,6 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
-
             "name": "squizlabs/php_codesniffer",
             "version": "3.10.3",
             "source": {
@@ -2028,7 +2118,6 @@
             "time": "2024-09-18T10:38:58+00:00"
         },
         {
-
             "name": "theseer/tokenizer",
             "version": "1.2.3",
             "source": {
@@ -2079,7 +2168,6 @@
             "time": "2024-03-03T12:36:25+00:00"
         },
         {
-
             "name": "wp-coding-standards/wpcs",
             "version": "3.1.0",
             "source": {
@@ -2146,7 +2234,6 @@
             "time": "2024-03-25T16:39:00+00:00"
         },
         {
-
             "name": "yoast/phpunit-polyfills",
             "version": "1.1.2",
             "source": {
@@ -2212,7 +2299,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "afragen/autoloader": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
