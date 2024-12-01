@@ -279,7 +279,7 @@ class Admin_Settings {
 					network_admin_url( 'index.php?page=aspireupdate-settings' )
 				)
 			);
-			exit;
+			! defined( 'AP_RUN_TESTS' ) && exit;
 		}
 	}
 

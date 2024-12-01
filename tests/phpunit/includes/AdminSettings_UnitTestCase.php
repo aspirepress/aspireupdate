@@ -13,6 +13,13 @@ abstract class AdminSettings_UnitTestCase extends WP_UnitTestCase {
 	protected static $option_name = 'aspireupdate_settings';
 
 	/**
+	 * The Slug of the Option's page.
+	 *
+	 * @var string
+	 */
+	protected static $options_page = 'aspireupdate-settings';
+
+	/**
 	 * Deletes settings before each test runs.
 	 *
 	 * @return void
