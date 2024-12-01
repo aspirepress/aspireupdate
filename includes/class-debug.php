@@ -31,23 +31,20 @@ class Debug {
 	/**
 	 * Initializes the WordPress Filesystem.
 	 *
-	 * @return WP_Filesystem_Base|false The filesystem object or false on failure.
+	 * @return WP_Filesystem_Direct|false The filesystem object or false on failure.
 	 */
 	private static function init_filesystem() {
-		global $wp_filesystem;
-
-		if ( ! $wp_filesystem ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-			WP_Filesystem();
-		}
-
-		return $wp_filesystem;
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+		WP_Filesystem();
+		return new Filesystem_Direct( false );
 	}
 
 	/**
 	 * Checks the filesystem status and logs error to debug log.
 	 *
-	 * @param WP_Filesystem_Base $wp_filesystem The filesystem object.
+	 * @param WP_Filesystem_Direct $wp_filesystem The filesystem object.
 	 *
 	 * @return boolean true on success and false on failure.
 	 */
@@ -144,17 +141,11 @@ class Debug {
 			) . PHP_EOL;
 
 			$file_path = self::get_file_path();
-
-			$content = '';
-			if ( $wp_filesystem->exists( $file_path ) ) {
-				if ( $wp_filesystem->is_readable( $file_path ) ) {
-					$content = $wp_filesystem->get_contents( $file_path );
-				}
-			}
 			$wp_filesystem->put_contents(
 				$file_path,
-				$formatted_message . $content,
-				FS_CHMOD_FILE
+				$formatted_message,
+				FS_CHMOD_FILE,
+				'a'
 			);
 		}
 	}
