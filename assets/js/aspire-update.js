@@ -97,7 +97,7 @@ class ViewLog {
 			jQuery.ajax(parameters)
 				.done(function (response) {
 					if ((true == response.success) && ('' != response.data.content)) {
-						let lines = response.data.content.split(aspireupdate.line_ending);
+						let lines = response.data.content;
 						jQuery.each(lines, function (index, line) {
 							jQuery('<div>')
 								.append(

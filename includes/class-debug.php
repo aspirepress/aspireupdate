@@ -31,23 +31,20 @@ class Debug {
 	/**
 	 * Initializes the WordPress Filesystem.
 	 *
-	 * @return WP_Filesystem_Base|false The filesystem object or false on failure.
+	 * @return WP_Filesystem_Direct|false The filesystem object or false on failure.
 	 */
 	private static function init_filesystem() {
-		global $wp_filesystem;
-
-		if ( ! $wp_filesystem ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-			WP_Filesystem();
-		}
-
-		return $wp_filesystem;
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+		WP_Filesystem();
+		return new Filesystem_Direct( false );
 	}
 
 	/**
 	 * Checks the filesystem status and logs error to debug log.
 	 *
-	 * @param WP_Filesystem_Base $wp_filesystem The filesystem object.
+	 * @param WP_Filesystem_Direct $wp_filesystem The filesystem object.
 	 *
 	 * @return boolean true on success and false on failure.
 	 */
@@ -85,25 +82,13 @@ class Debug {
 			return new \WP_Error( 'not_readable', __( 'Error: Unable to read the log file.', 'aspireupdate' ) );
 		}
 
-		$file_content = $wp_filesystem->get_contents_array( $file_path );
-		$content      = '';
-		$index        = 0;
-		foreach ( $file_content as $file_content_lines ) {
-			if ( ( $index < $limit ) ) {
-				$content .= $file_content_lines . PHP_EOL;
-				++$index;
-			}
+		$file_content = $wp_filesystem->get_contents_array( $file_path, $limit, true );
+
+		if ( ( false === $file_content ) || ( 0 === count( $file_content ) ) ) {
+			$file_content = [ esc_html__( '*****Log file is empty.*****', 'aspireupdate' ) ];
 		}
-		if ( '' === trim( $content ) ) {
-			$content = esc_html__( '*****Log file is empty.*****', 'aspireupdate' );
-		} elseif ( $limit < count( $file_content ) ) {
-			$content .= PHP_EOL . sprintf(
-				/* translators: 1: The number of lines at which the content was truncated. */
-				esc_html__( '*****Log truncated at %s lines.*****', 'aspireupdate' ),
-				$limit
-			);
-		}
-		return $content;
+
+		return $file_content;
 	}
 
 	/**
@@ -144,17 +129,11 @@ class Debug {
 			) . PHP_EOL;
 
 			$file_path = self::get_file_path();
-
-			$content = '';
-			if ( $wp_filesystem->exists( $file_path ) ) {
-				if ( $wp_filesystem->is_readable( $file_path ) ) {
-					$content = $wp_filesystem->get_contents( $file_path );
-				}
-			}
 			$wp_filesystem->put_contents(
 				$file_path,
-				$formatted_message . $content,
-				FS_CHMOD_FILE
+				$formatted_message,
+				FS_CHMOD_FILE,
+				'a'
 			);
 		}
 	}
