@@ -41,5 +41,10 @@ jobs:
       - name: Setup tests
         run: bash bin/install-wp-tests.sh wordpress_tests root root 127.0.0.1 latest true
 
+      - name: Prime the WordPress install for tests
+        id: prime-tests
+        run: XDEBUG_MODE=off phpunit${{ matrix.multisite && ' -c tests/phpunit/multisite.xml' || '' }} --filter gha_install_wp > /dev/null 2>&1
+
       - name: Run tests
-        run: XDEBUG_MODE=off phpunit${{ matrix.multisite && ' -c tests/phpunit/multisite.xml' || '' }}
+        if: steps.prime-tests.outcome == 'success'
+        run: XDEBUG_MODE=off WP_TESTS_SKIP_INSTALL=1 phpunit${{ matrix.multisite && ' -c tests/phpunit/multisite.xml' || '' }}
