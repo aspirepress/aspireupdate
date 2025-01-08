@@ -62,10 +62,7 @@ jobs:
 
       - name: Create pull request
         if: env.CHANGES_DETECTED == 1
-        uses: repo-sync/pull-request@v2
-        with:
-          source_branch: generate-pot
-          destination_branch: ${{ github.event.repository.default_branch }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: Generate POT
-          pr_body: "This is an automated pull-request"
+        run: gh pr create --base ${BRANCH_NAME} --head generate-pot --title "Generate POT - $(date +'%Y-%m-%d')" --body "Automated PR"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
