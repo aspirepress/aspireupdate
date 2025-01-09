@@ -40,5 +40,9 @@ tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 // Start up the WP testing environment.
 require "{$_tests_dir}/includes/bootstrap.php";
 
+// Load unit test mocks and fakes.
+require __DIR__ . '/includes/class-ap-fake-filesystem.php';
+
 // Load unit test abstract classes.
 require __DIR__ . '/includes/AdminSettings_UnitTestCase.php';
+require __DIR__ . '/includes/Debug_UnitTestCase.php';

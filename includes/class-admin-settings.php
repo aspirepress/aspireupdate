@@ -506,6 +506,8 @@ class Admin_Settings {
 	/**
 	 * The Fields API which any CMS should have in its core but something we dont, hence this ugly hack.
 	 *
+	 * @codeCoverageIgnore Test with E2E tests instead.
+	 *
 	 * @param array $args The Field Parameters.
 	 *
 	 * @return void Echos the Field HTML.

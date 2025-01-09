@@ -63,7 +63,7 @@ class Debug {
 				/**
 				 * Log error in file write fails only if debug is set to true.  This is a valid use case.
 				 */
-				error_log( 'AspireUpdate - Could not open or write to the file system. Check file system permissions to debug log directory.' );
+				error_log( 'AspireUpdate - Could not open or write to the file system. Check file system permissions to debug log directory.' ); // @codeCoverageIgnore
 				// phpcs:enable
 			}
 			return false;
