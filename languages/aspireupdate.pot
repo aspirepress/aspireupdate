@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-09T20:14:01+00:00\n"
+"POT-Creation-Date: 2025-01-10T05:21:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: aspireupdate\n"
@@ -150,20 +150,15 @@ msgstr ""
 msgid "Log file cleared successfully."
 msgstr ""
 
-#: includes/class-debug.php:85
+#: includes/class-debug.php:66
 msgid "Error: Unable to read the log file."
 msgstr ""
 
-#: includes/class-debug.php:98
+#: includes/class-debug.php:72
 msgid "*****Log file is empty.*****"
 msgstr ""
 
-#. translators: 1: The number of lines at which the content was truncated.
-#: includes/class-debug.php:102
-msgid "*****Log truncated at %s lines.*****"
-msgstr ""
-
-#: includes/class-debug.php:118
+#: includes/class-debug.php:88
 msgid "Error: Unable to access the log file."
 msgstr ""
 
