@@ -74,7 +74,7 @@ class Admin_Settings {
 	 */
 	private function get_default_settings() {
 		$options             = [];
-		$options['api_host'] = 'api.aspirecloud.org';
+		$options['api_host'] = 'api.aspirecloud.net';
 		return $options;
 	}
 
