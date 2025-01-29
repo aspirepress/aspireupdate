@@ -114,6 +114,60 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that the API Key is added to the Authorization header.
+	 */
+	public function test_should_add_api_key_to_authorization_header_when_present() {
+		$actual = [];
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args ) use ( &$actual ) {
+				$actual = $parsed_args;
+				return $response;
+			},
+			10,
+			2
+		);
+
+		$api_key     = 'MY_API_KEY';
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true, $api_key );
+		$api_rewrite->pre_http_request( [], [], $this->get_default_host() );
+
+		$this->assertIsArray(
+			$actual,
+			'Parsed arguments is not an array.'
+		);
+
+		$this->assertArrayHasKey(
+			'headers',
+			$actual,
+			'The "headers" key is not present.'
+		);
+
+		$this->assertIsArray(
+			$actual['headers'],
+			'The "headers" value is not an array.'
+		);
+
+		$this->assertArrayHasKey(
+			'Authorization',
+			$actual['headers'],
+			'There is no authorization header.'
+		);
+
+		$this->assertIsString(
+			$actual['headers']['Authorization'],
+			'The authorization header is not a string.'
+		);
+
+		$this->assertSame(
+			"Bearer $api_key",
+			$actual['headers']['Authorization'],
+			'The authorization header is wrong.'
+		);
+	}
+
+	/**
 	 * Gets the default host.
 	 *
 	 * @return string The default host.
