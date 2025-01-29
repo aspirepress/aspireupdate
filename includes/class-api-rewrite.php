@@ -43,7 +43,8 @@ class API_Rewrite {
 	 * The Constructor.
 	 *
 	 * @param string  $redirected_host The host to redirect to.
-	 * @param boolean $disable_ssl Disable SSL.
+	 * @param boolean $disable_ssl     Disable SSL.
+	 * @param string  $api_key         The API key to use with the host.
 	 */
 	public function __construct( $redirected_host, $disable_ssl, $api_key ) {
 		if ( 'debug' === $redirected_host ) {
