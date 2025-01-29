@@ -18,7 +18,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		$request = new MockAction();
 		add_filter( 'pre_http_request', [ $request, 'filter' ] );
 
-		$api_rewrite = new AspireUpdate\API_Rewrite( '', false );
+		$api_rewrite = new AspireUpdate\API_Rewrite( '', false, '' );
 		$api_rewrite->pre_http_request( [], [], '' );
 
 		$this->assertSame( 0, $request->get_call_count() );
@@ -32,7 +32,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		add_filter( 'pre_http_request', [ $request, 'filter' ] );
 
 		$default_host = $this->get_default_host();
-		$api_rewrite  = new AspireUpdate\API_Rewrite( $default_host, false );
+		$api_rewrite  = new AspireUpdate\API_Rewrite( $default_host, false, '' );
 
 		$api_rewrite->pre_http_request( [], [], $default_host );
 
@@ -55,7 +55,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 			2
 		);
 
-		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', false );
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', false, '' );
 		$api_rewrite->pre_http_request(
 			[],
 			[ 'sslverify' => 'original_sslverify_value' ],
@@ -81,7 +81,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 			2
 		);
 
-		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true );
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
 		$api_rewrite->pre_http_request(
 			[],
 			[ 'sslverify' => true ],
@@ -107,10 +107,10 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 			3
 		);
 
-		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true );
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
 		$api_rewrite->pre_http_request( [], [], $this->get_default_host() );
 
-		$this->assertSame( 'my.api.org', $actual );
+		$this->assertMatchesRegularExpression( '/my\.api\.org\?cache_buster=[0-9]+/', $actual );
 	}
 
 	/**

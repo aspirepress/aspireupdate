@@ -20,7 +20,7 @@ class APIRewrite_ConstructTest extends WP_UnitTestCase {
 	 * @string $method The method to hook.
 	 */
 	public function test_should_add_hooks( $hook, $method ) {
-		$api_rewrite = new AspireUpdate\API_Rewrite( 'debug', false );
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'debug', false, '' );
 		$this->assertIsInt( has_action( $hook, [ $api_rewrite, $method ] ) );
 	}
 
@@ -50,7 +50,8 @@ class APIRewrite_ConstructTest extends WP_UnitTestCase {
 	public function test_should_set_properties( $property_name, $passed_value, $expected_value ) {
 		$api_rewrite = new AspireUpdate\API_Rewrite(
 			'redirected_host' === $property_name ? $passed_value : 'debug',
-			'disable_ssl' === $property_name ? $passed_value : false
+			'disable_ssl' === $property_name ? $passed_value : false,
+			''
 		);
 
 		if ( '%DEFAULT_HOST%' === $expected_value ) {
