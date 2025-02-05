@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-29T18:32:07+00:00\n"
+"POT-Creation-Date: 2025-02-05T01:04:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: aspireupdate\n"
@@ -42,88 +42,113 @@ msgstr ""
 msgid "https://docs.aspirepress.org/aspireupdate/"
 msgstr ""
 
-#: includes/class-admin-settings.php:139
+#: includes/class-admin-settings.php:146
 msgid "Settings have been reset to default."
 msgstr ""
 
-#: includes/class-admin-settings.php:156
+#: includes/class-admin-settings.php:163
 msgid "Settings Saved"
 msgstr ""
 
-#: includes/class-admin-settings.php:329
+#: includes/class-admin-settings.php:341
 msgid "Unexpected Error"
 msgstr ""
 
-#: includes/class-admin-settings.php:383
+#: includes/class-admin-settings.php:395
 msgid "API Configuration"
 msgstr ""
 
-#: includes/class-admin-settings.php:394
+#: includes/class-admin-settings.php:406
 msgid "Enable AspireUpdate API Rewrites"
 msgstr ""
 
-#: includes/class-admin-settings.php:407
+#: includes/class-admin-settings.php:419
 msgid "API Host"
 msgstr ""
 
-#: includes/class-admin-settings.php:415
+#: includes/class-admin-settings.php:427
 msgid "Your new API Host."
 msgstr ""
 
-#: includes/class-admin-settings.php:425
+#. translators: 1: The name of the API Service
+#: includes/class-admin-settings.php:433
+msgid "AspireCloud (%1$s)"
+msgstr ""
+
+#: includes/class-admin-settings.php:441
 msgid "Other"
 msgstr ""
 
-#: includes/class-admin-settings.php:434
+#: includes/class-admin-settings.php:450
 msgid "API Key"
 msgstr ""
 
-#: includes/class-admin-settings.php:442
+#: includes/class-admin-settings.php:458
 msgid "Provides an API key for repositories that may require authentication."
 msgstr ""
 
-#: includes/class-admin-settings.php:448
+#: includes/class-admin-settings.php:464
 msgid "API Debug Configuration"
 msgstr ""
 
-#: includes/class-admin-settings.php:459
+#: includes/class-admin-settings.php:475
 msgid "Enable Debug Mode"
 msgstr ""
 
-#: includes/class-admin-settings.php:467
+#: includes/class-admin-settings.php:483
 msgid "Enables debug mode for the plugin."
 msgstr ""
 
-#: includes/class-admin-settings.php:473
+#: includes/class-admin-settings.php:489
 msgid "Enable Debug Type"
 msgstr ""
 
-#: includes/class-admin-settings.php:482
+#: includes/class-admin-settings.php:498
 msgid "Request"
 msgstr ""
 
-#: includes/class-admin-settings.php:483
+#: includes/class-admin-settings.php:499
 msgid "Response"
 msgstr ""
 
-#: includes/class-admin-settings.php:484
+#: includes/class-admin-settings.php:500
 msgid "String"
 msgstr ""
 
-#: includes/class-admin-settings.php:486
+#: includes/class-admin-settings.php:502
 msgid "Outputs the request URL and headers / response headers and body / string that is being rewritten."
 msgstr ""
 
-#: includes/class-admin-settings.php:492
+#: includes/class-admin-settings.php:508
 msgid "Disable SSL Verification"
 msgstr ""
 
-#: includes/class-admin-settings.php:501
+#: includes/class-admin-settings.php:517
 msgid "Disables the verification of SSL to allow local testing."
 msgstr ""
 
-#: includes/class-admin-settings.php:566
+#: includes/class-admin-settings.php:582
 msgid "Generate API Key"
+msgstr ""
+
+#: includes/class-api-rewrite.php:77
+msgid "Default API Found: "
+msgstr ""
+
+#: includes/class-api-rewrite.php:81
+msgid "SSL Verification Disabled"
+msgstr ""
+
+#: includes/class-api-rewrite.php:86
+msgid "API Key Authorization header added."
+msgstr ""
+
+#: includes/class-api-rewrite.php:95
+msgid "Cache Buster Added to URL"
+msgstr ""
+
+#: includes/class-api-rewrite.php:98
+msgid "API Rerouted to: "
 msgstr ""
 
 #. translators: 1: The name of the plugin, 2: The documentation URL.
@@ -141,12 +166,12 @@ msgstr ""
 msgid "Your WordPress, plugin, theme and translation updates are now powered by <strong>%1$s</strong>. <a href=\"%2$s\">Learn more</a>"
 msgstr ""
 
-#: includes/class-controller.php:65
-#: includes/class-controller.php:97
+#: includes/class-controller.php:71
+#: includes/class-controller.php:108
 msgid "Error: You are not authorized to access this resource."
 msgstr ""
 
-#: includes/class-controller.php:81
+#: includes/class-controller.php:87
 msgid "Log file cleared successfully."
 msgstr ""
 
