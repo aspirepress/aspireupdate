@@ -3,9 +3,8 @@ name: Generate POT PR
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-
+    tags:
+      - "**"
 jobs:
   generate-pot:
     name: Generate POT PR
