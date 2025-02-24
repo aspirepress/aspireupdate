@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: AspireUpdate 0.6\n"
+"Project-Id-Version: AspireUpdate 0.6.2\n"
 "Report-Msgid-Bugs-To: https://github.com/aspirepress/aspireupdate/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-05T01:04:56+00:00\n"
+"POT-Creation-Date: 2025-02-24T20:40:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: aspireupdate\n"
@@ -42,112 +42,140 @@ msgstr ""
 msgid "https://docs.aspirepress.org/aspireupdate/"
 msgstr ""
 
-#: includes/class-admin-settings.php:146
+#: includes/class-admin-settings.php:155
 msgid "Settings have been reset to default."
 msgstr ""
 
-#: includes/class-admin-settings.php:163
+#: includes/class-admin-settings.php:171
 msgid "Settings Saved"
 msgstr ""
 
-#: includes/class-admin-settings.php:341
+#: includes/class-admin-settings.php:315
+msgid "Settings"
+msgstr ""
+
+#: includes/class-admin-settings.php:362
 msgid "Unexpected Error"
 msgstr ""
 
-#: includes/class-admin-settings.php:395
+#: includes/class-admin-settings.php:363
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: includes/class-admin-settings.php:418
 msgid "API Configuration"
 msgstr ""
 
-#: includes/class-admin-settings.php:406
+#: includes/class-admin-settings.php:429
 msgid "Enable AspireUpdate API Rewrites"
 msgstr ""
 
-#: includes/class-admin-settings.php:419
+#: includes/class-admin-settings.php:443
 msgid "API Host"
 msgstr ""
 
-#: includes/class-admin-settings.php:427
-msgid "Your new API Host."
+#: includes/class-admin-settings.php:451
+msgid "Your new API Host. Ensure that it starts with http:// or https://"
 msgstr ""
 
 #. translators: 1: The name of the API Service
-#: includes/class-admin-settings.php:433
+#: includes/class-admin-settings.php:458
 msgid "AspireCloud (%1$s)"
 msgstr ""
 
-#: includes/class-admin-settings.php:441
+#. translators: 1: The name of the API Service
+#: includes/class-admin-settings.php:468
+msgid "AspireCloud Bleeding Edge (%1$s)"
+msgstr ""
+
+#: includes/class-admin-settings.php:476
 msgid "Other"
 msgstr ""
 
-#: includes/class-admin-settings.php:450
+#: includes/class-admin-settings.php:485
 msgid "API Key"
 msgstr ""
 
-#: includes/class-admin-settings.php:458
+#: includes/class-admin-settings.php:493
 msgid "Provides an API key for repositories that may require authentication."
 msgstr ""
 
-#: includes/class-admin-settings.php:464
+#: includes/class-admin-settings.php:500
 msgid "API Debug Configuration"
 msgstr ""
 
-#: includes/class-admin-settings.php:475
+#: includes/class-admin-settings.php:511
 msgid "Enable Debug Mode"
 msgstr ""
 
-#: includes/class-admin-settings.php:483
+#: includes/class-admin-settings.php:519
 msgid "Enables debug mode for the plugin."
 msgstr ""
 
-#: includes/class-admin-settings.php:489
+#: includes/class-admin-settings.php:526
 msgid "Enable Debug Type"
 msgstr ""
 
-#: includes/class-admin-settings.php:498
+#: includes/class-admin-settings.php:535
 msgid "Request"
 msgstr ""
 
-#: includes/class-admin-settings.php:499
+#: includes/class-admin-settings.php:536
 msgid "Response"
 msgstr ""
 
-#: includes/class-admin-settings.php:500
+#: includes/class-admin-settings.php:537
 msgid "String"
 msgstr ""
 
-#: includes/class-admin-settings.php:502
+#: includes/class-admin-settings.php:539
 msgid "Outputs the request URL and headers / response headers and body / string that is being rewritten."
 msgstr ""
 
-#: includes/class-admin-settings.php:508
+#: includes/class-admin-settings.php:545
 msgid "Disable SSL Verification"
 msgstr ""
 
-#: includes/class-admin-settings.php:517
+#: includes/class-admin-settings.php:554
 msgid "Disables the verification of SSL to allow local testing."
 msgstr ""
 
-#: includes/class-admin-settings.php:582
+#: includes/class-admin-settings.php:621
 msgid "Generate API Key"
 msgstr ""
 
-#: includes/class-api-rewrite.php:77
-msgid "Default API Found: "
-msgstr ""
-
-#: includes/class-api-rewrite.php:81
-msgid "SSL Verification Disabled"
-msgstr ""
-
-#: includes/class-api-rewrite.php:86
+#: includes/class-api-rewrite.php:72
 msgid "API Key Authorization header added."
 msgstr ""
 
-#: includes/class-api-rewrite.php:95
+#: includes/class-api-rewrite.php:92
+msgid "Accept JSON Header added for API calls."
+msgstr ""
+
+#: includes/class-api-rewrite.php:109
 msgid "Cache Buster Added to URL"
 msgstr ""
 
-#: includes/class-api-rewrite.php:98
+#: includes/class-api-rewrite.php:130
+msgid "Default API Found: "
+msgstr ""
+
+#: includes/class-api-rewrite.php:133
+msgid "Your API host is not a valid URL."
+msgstr ""
+
+#. translators: %s: The error message.
+#. translators: %s: The response message.
+#: includes/class-api-rewrite.php:137
+#: includes/class-api-rewrite.php:182
+msgid "Request Failed: %s"
+msgstr ""
+
+#: includes/class-api-rewrite.php:146
+msgid "SSL Verification Disabled"
+msgstr ""
+
+#: includes/class-api-rewrite.php:159
 msgid "API Rerouted to: "
 msgstr ""
 
@@ -175,30 +203,30 @@ msgstr ""
 msgid "Log file cleared successfully."
 msgstr ""
 
-#: includes/class-debug.php:66
+#: includes/class-debug.php:74
 msgid "Error: Unable to read the log file."
 msgstr ""
 
-#: includes/class-debug.php:72
+#: includes/class-debug.php:80
 msgid "*****Log file is empty.*****"
 msgstr ""
 
-#: includes/class-debug.php:88
+#: includes/class-debug.php:96
 msgid "Error: Unable to access the log file."
 msgstr ""
 
-#: includes/views/page-admin-settings.php:8
+#: includes/views/page-admin-settings.php:9
 msgid "AspireUpdate Settings"
 msgstr ""
 
-#: includes/views/page-admin-settings.php:17
+#: includes/views/page-admin-settings.php:18
 msgid "Reset"
 msgstr ""
 
-#: includes/views/page-admin-settings.php:18
+#: includes/views/page-admin-settings.php:19
 msgid "Clear Log"
 msgstr ""
 
-#: includes/views/page-admin-settings.php:19
+#: includes/views/page-admin-settings.php:20
 msgid "View Log"
 msgstr ""
