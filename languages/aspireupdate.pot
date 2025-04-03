@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: AspireUpdate 0.6.2\n"
+"Project-Id-Version: AspireUpdate 0.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/aspirepress/aspireupdate/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-25T17:12:24+00:00\n"
+"POT-Creation-Date: 2025-04-03T19:57:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: aspireupdate\n"
@@ -156,26 +156,51 @@ msgstr ""
 msgid "Cache Buster Added to URL"
 msgstr ""
 
-#: includes/class-api-rewrite.php:130
+#: includes/class-api-rewrite.php:194
 msgid "Default API Found: "
 msgstr ""
 
-#: includes/class-api-rewrite.php:133
+#: includes/class-api-rewrite.php:197
 msgid "Your API host is not a valid URL."
 msgstr ""
 
 #. translators: %s: The error message.
-#: includes/class-api-rewrite.php:137
-#: includes/class-api-rewrite.php:182
+#: includes/class-api-rewrite.php:201
+#: includes/class-api-rewrite.php:276
 msgid "Request Failed: %s"
 msgstr ""
 
-#: includes/class-api-rewrite.php:146
+#: includes/class-api-rewrite.php:210
 msgid "SSL Verification Disabled"
 msgstr ""
 
-#: includes/class-api-rewrite.php:159
+#: includes/class-api-rewrite.php:223
 msgid "API Rerouted to: "
+msgstr ""
+
+#. translators: %s: The asset type.
+#: includes/class-api-rewrite.php:247
+msgid "Removed non-API %s from the update request."
+msgstr ""
+
+#: includes/class-api-rewrite.php:248
+#: includes/class-api-rewrite.php:306
+msgid "plugins"
+msgstr ""
+
+#: includes/class-api-rewrite.php:248
+#: includes/class-api-rewrite.php:306
+msgid "themes"
+msgstr ""
+
+#. translators: %s: The asset type.
+#: includes/class-api-rewrite.php:305
+msgid "Removed non-API %s from the update response."
+msgstr ""
+
+#. translators: %s: AspireUpdate.
+#: includes/class-api-rewrite.php:325
+msgid "Removed %s from the response."
 msgstr ""
 
 #. translators: 1: The name of the plugin, 2: The documentation URL.
