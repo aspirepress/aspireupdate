@@ -4,11 +4,11 @@
 .gitignore export-ignore
 .editorconfig export-ignore
 .nvmrc export-ignore
-.package.json export-ignore
-.package-lock.json export-ignore
 .pre-commit-config.yaml export-ignore
 .wp-env.json export-ignore
 composer.lock export-ignore
+package.json export-ignore
+package-lock.json export-ignore
 phpunit.xml export-ignore
 phpunit.xml.dist export-ignore
 phpcs.xml export-ignore
