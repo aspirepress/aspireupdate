@@ -56,7 +56,7 @@ class API_Rewrite {
 		$this->api_key     = $api_key;
 
 		if ( Admin_Settings::get_instance()->get_setting( 'enable', false ) ) {
-			add_filter( 'pre_http_request', [ $this, 'pre_http_request' ], 10, 3 );
+			add_filter( 'pre_http_request', [ $this, 'pre_http_request' ], PHP_INT_MAX, 3 );
 		}
 	}
 
@@ -192,6 +192,20 @@ class API_Rewrite {
 		) {
 			if ( false !== strpos( $url, $this->default_host ) ) {
 				Debug::log_string( __( 'Default API Found: ', 'aspireupdate' ) . $url );
+
+				$admin_settings = \AspireUpdate\Admin_Settings::get_instance();
+				if ( false !== $response && ! $admin_settings->get_setting( 'override_existing_responses' ) ) {
+					Debug::log_string(
+						sprintf(
+							/* translators: 1: The options' name, 2: The constant's name, 3: The explicitly required value. */
+							__( 'The response has already been changed. Enable the %1$s option or set the %2$s constant to %3$s to override this response in future.', 'aspireupdate' ),
+							'override_existing_responses',
+							'AP_OVERRIDE_EXISTING_RESPONSES',
+							'true'
+						)
+					);
+					return $response;
+				}
 
 				if ( false === filter_var( $this->redirected_host, FILTER_VALIDATE_URL ) ) {
 					$error_message = __( 'Your API host is not a valid URL.', 'aspireupdate' );

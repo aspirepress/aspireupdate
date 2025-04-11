@@ -55,7 +55,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		add_filter( 'pre_http_request', [ $request, 'filter' ] );
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( '', false, '' );
-		$api_rewrite->pre_http_request( [], [], '' );
+		$api_rewrite->pre_http_request( false, [], '' );
 
 		$this->assertSame( 0, $request->get_call_count() );
 	}
@@ -70,7 +70,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		$default_host = $this->get_default_host();
 		$api_rewrite  = new AspireUpdate\API_Rewrite( $default_host, false, '' );
 
-		$api_rewrite->pre_http_request( [], [], $default_host );
+		$api_rewrite->pre_http_request( false, [], $default_host );
 
 		$this->assertSame( 0, $request->get_call_count() );
 	}
@@ -93,7 +93,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', false, '' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[ 'sslverify' => 'original_sslverify_value' ],
 			'https://' . $this->get_default_host()
 		);
@@ -119,7 +119,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[ 'sslverify' => true ],
 			'https://' . $this->get_default_host()
 		);
@@ -146,7 +146,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		);
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
-		$api_rewrite->pre_http_request( [], [], 'https://' . $this->get_default_host() );
+		$api_rewrite->pre_http_request( false, [], 'https://' . $this->get_default_host() );
 
 		$this->assertMatchesRegularExpression( '/my\.api\.org\?cache_buster=[0-9]+/', $actual );
 	}
@@ -171,7 +171,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_key     = 'MY_API_KEY';
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, $api_key );
-		$api_rewrite->pre_http_request( [], [], 'https://' . $this->get_default_host() );
+		$api_rewrite->pre_http_request( false, [], 'https://' . $this->get_default_host() );
 
 		$this->assertIsArray(
 			$actual,
@@ -231,7 +231,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, 'MY_API_KEY' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			untrailingslashit( 'https://' . $this->get_default_host() ) . $path
 		);
@@ -317,7 +317,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, 'MY_API_KEY' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			'https://' . $this->get_default_host() . $path
 		);
@@ -404,7 +404,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		// No API key ensures no Authorization header will be already set.
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			'https://' . $this->get_default_host() . '/file.php'
 		);
@@ -456,7 +456,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', false, '' );
 		$api_rewrite->pre_http_request(
-			[],
+			false,
 			[
 				'body' => [
 					'plugins' => wp_json_encode( [ 'plugins' => $plugins ] ),
@@ -541,7 +541,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', false, '' );
 		$actual      = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[ 'body' => $body ],
 			'https://' . $this->get_default_host() . '/plugins/info/1.0/'
 		);
@@ -590,7 +590,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		wp_cache_set( 'plugins', [ '' => $plugins ], 'plugins' );
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', false, '' );
 		$actual      = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[
 				'body' => [
 					'plugins' => wp_json_encode( [ 'plugins' => $plugins ] ),
@@ -768,7 +768,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', false, '' );
 		$response    = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			'https://' . $this->get_default_host() . '/plugins/info/1.0/'
 		);
@@ -831,7 +831,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
 		$actual      = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			$this->get_default_host() . '/file.php'
 		);
@@ -883,7 +883,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
 		$actual      = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			'https://' . $this->get_default_host() . '/file.php'
 		);
@@ -925,7 +925,7 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 	public function test_should_return_wp_error_for_redirected_host_that_is_an_invalid_url() {
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
 		$actual      = $api_rewrite->pre_http_request(
-			[],
+			false,
 			[],
 			'https://' . $this->get_default_host() . '/file.php'
 		);
@@ -941,6 +941,160 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 			$actual->get_error_code(),
 			'The wrong error code was returned.'
 		);
+	}
+
+	/**
+	 * Test that existing responses are not overridden when the 'AP_OVERRIDE_EXISTING_RESPONSES'
+	 * constant is set to false.
+	 *
+	 * This test causes constants to be defined.
+	 * It must run in separate processes and must not preserve global state.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function test_should_not_override_existing_responses_when_the_ap_override_existing_responses_constant_is_set_to_false() {
+		define( 'AP_ENABLE', true );
+		define( 'AP_OVERRIDE_EXISTING_RESPONSES', false );
+
+		$default_host = 'https://' . $this->get_default_host();
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( $default_host ) {
+				if ( $default_host === $url ) {
+					return [ 'body' => 'Test Response' ];
+				}
+
+				return $response;
+			},
+			0,
+			3
+		);
+
+		new \AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
+		$response = wp_remote_get( $default_host );
+		$body     = wp_remote_retrieve_body( $response );
+
+		$this->assertSame( 'Test Response', $body );
+	}
+
+	/**
+	 * Test that existing responses are not overridden when the 'override_existing_responses'
+	 * option is disabled.
+	 *
+	 * This test causes constants to be defined.
+	 * It must run in separate processes and must not preserve global state.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function test_should_not_override_existing_responses_when_the_override_existing_responses_option_is_disabled() {
+		update_site_option(
+			'aspireupdate_settings',
+			[
+				'enable'                      => 1,
+				'override_existing_responses' => 0,
+			]
+		);
+
+		$default_host = 'https://' . $this->get_default_host();
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( $default_host ) {
+				if ( $default_host === $url ) {
+					return [ 'body' => 'Test Response' ];
+				}
+
+				return $response;
+			},
+			0,
+			3
+		);
+
+		new \AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
+		$response = wp_remote_get( $default_host );
+		$body     = wp_remote_retrieve_body( $response );
+
+		$this->assertSame( 'Test Response', $body );
+	}
+
+	/**
+	 * Test that existing responses are overridden when the 'AP_OVERRIDE_EXISTING_RESPONSES'
+	 * constant is set to true.
+	 *
+	 * This test causes constants to be defined.
+	 * It must run in separate processes and must not preserve global state.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function test_should_override_existing_responses_when_the_ap_override_existing_responses_constant_is_set_to_true() {
+		define( 'AP_ENABLE', true );
+		define( 'AP_OVERRIDE_EXISTING_RESPONSES', true );
+
+		$default_host = 'https://' . $this->get_default_host();
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( $default_host ) {
+				if ( $default_host === $url ) {
+					return [ 'body' => 'Test Response' ];
+				}
+
+				return $response;
+			},
+			0,
+			3
+		);
+
+		new \AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
+		$response = wp_remote_get( $default_host );
+		$body     = wp_remote_retrieve_body( $response );
+
+		$this->assertNotSame( 'Test Response', $body );
+	}
+
+	/**
+	 * Test that existing responses are overridden when the 'override_existing_responses'
+	 * option is enabled.
+	 *
+	 * This test causes constants to be defined.
+	 * It must run in separate processes and must not preserve global state.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function test_should_override_existing_responses_when_the_override_existing_responses_option_is_enabled() {
+		update_site_option(
+			'aspireupdate_settings',
+			[
+				'enable'                      => 1,
+				'override_existing_responses' => 1,
+			]
+		);
+
+		$default_host = 'https://' . $this->get_default_host();
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( $default_host ) {
+				if ( $default_host === $url ) {
+					return [ 'body' => 'Test Response' ];
+				}
+
+				return $response;
+			},
+			0,
+			3
+		);
+
+		new \AspireUpdate\API_Rewrite( 'my.api.org', true, '' );
+		$response = wp_remote_get( $default_host );
+		$body     = wp_remote_retrieve_body( $response );
+
+		$this->assertNotSame( 'Test Response', $body );
 	}
 
 	/**

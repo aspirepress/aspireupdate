@@ -34,15 +34,16 @@ The plugin menu appears under the Settings main menu item.
 
 The plugin can use the following configuration options in wp-config.php:
 
-| Configuration Parameter |                                                                                              Description |                        Default, if any |
-| :---------------------- | -------------------------------------------------------------------------------------------------------: | -------------------------------------: |
-| AP_ENABLE               |                                                                                       Enable API rewrite |                                  false |
-| AP_API_KEY              |                                                     The API Key for AspireCloud (not currently enforced) |                                        |
-| AP_HOST                 |                                                                                          API domain name |                    api.aspirecloud.net |
-| AP_DEBUG                |                                                                                        Enable Debug Mode |                                  false |
-| AP_DEBUG_TYPES          |                                                                                  an array of debug modes | array('string', 'request', 'response') |
-| AP_DISABLE_SSL          |                                                              Disabled SSL verification for local testing |                                   true |
-| AP_REMOVE_UI            | Disables plugin settings user interface and branding, defaults to config parameters set in wp-config.php |                                  false |
+| Configuration Parameter        |                                                                                              Description |                        Default, if any |
+| :----------------------------- | -------------------------------------------------------------------------------------------------------: | -------------------------------------: |
+| AP_ENABLE                      |                                                                                       Enable API rewrite |                                  false |
+| AP_API_KEY                     |                                                     The API Key for AspireCloud (not currently enforced) |                                        |
+| AP_HOST                        |                                                                                          API domain name |                    api.aspirecloud.net |
+| AP_OVERRIDE_EXISTING_RESPONSES |                       Whether to override existing responses from other plugins performing API rewriting |                                  false |
+| AP_DEBUG                       |                                                                                        Enable Debug Mode |                                  false |
+| AP_DEBUG_TYPES                 |                                                                                  an array of debug modes | array('string', 'request', 'response') |
+| AP_DISABLE_SSL                 |                                                              Disabled SSL verification for local testing |                                   true |
+| AP_REMOVE_UI                   | Disables plugin settings user interface and branding, defaults to config parameters set in wp-config.php |                                  false |
 
 To set AP_DEBUG_TYPES use an array to define the constant:
 

@@ -242,6 +242,12 @@ class Admin_Settings {
 			$options['api_key'] = AP_API_KEY;
 		}
 
+		if ( ! defined( 'AP_OVERRIDE_EXISTING_RESPONSES' ) ) {
+			define( 'AP_OVERRIDE_EXISTING_RESPONSES', false );
+		} else {
+			$options['override_existing_responses'] = AP_OVERRIDE_EXISTING_RESPONSES;
+		}
+
 		if ( ! defined( 'AP_DEBUG' ) ) {
 			define( 'AP_DEBUG', false );
 		} elseif ( AP_DEBUG ) {
@@ -495,6 +501,21 @@ class Admin_Settings {
 			]
 		);
 
+		add_settings_field(
+			'override_existing_responses',
+			esc_html__( 'Override existing responses', 'aspireupdate' ),
+			[ $this, 'add_settings_field_callback' ],
+			'aspireupdate-settings',
+			'aspireupdate_settings_section',
+			[
+				'id'          => 'override_existing_responses',
+				'type'        => 'checkbox',
+				'data'        => $options,
+				'description' => esc_html__( 'Whether to override existing responses from plugins which also rewrite API requests.', 'aspireupdate' ),
+				'label_for'   => 'aspireupdate-settings-field-override_existing_responses',
+			]
+		);
+
 		add_settings_section(
 			'aspireupdate_debug_settings_section',
 			esc_html__( 'API Debug Configuration', 'aspireupdate' ),
@@ -667,10 +688,11 @@ class Admin_Settings {
 	public function sanitize_settings( $input ) {
 		$sanitized_input = [];
 
-		$sanitized_input['enable']         = (int) ! empty( $input['enable'] );
-		$sanitized_input['api_key']        = sanitize_text_field( $input['api_key'] ?? '' );
-		$sanitized_input['api_host']       = sanitize_text_field( $input['api_host'] ?? '' );
-		$sanitized_input['api_host_other'] = sanitize_text_field( $input['api_host_other'] ?? '' );
+		$sanitized_input['enable']                      = (int) ! empty( $input['enable'] );
+		$sanitized_input['api_key']                     = sanitize_text_field( $input['api_key'] ?? '' );
+		$sanitized_input['api_host']                    = sanitize_text_field( $input['api_host'] ?? '' );
+		$sanitized_input['api_host_other']              = sanitize_text_field( $input['api_host_other'] ?? '' );
+		$sanitized_input['override_existing_responses'] = (int) ! empty( $input['override_existing_responses'] );
 
 		$sanitized_input['enable_debug'] = (int) ! empty( $input['enable_debug'] );
 		if ( isset( $input['enable_debug_type'] ) && is_array( $input['enable_debug_type'] ) ) {

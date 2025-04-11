@@ -138,7 +138,8 @@ class ApiRewrites {
 		init() {
 			ApiRewrites.enabled_rewrites.sub_fields = [
 				ApiRewrites.host_selector,
-				ApiRewrites.api_key
+				ApiRewrites.api_key,
+				ApiRewrites.override_existing_responses
 			];
 
 			ApiRewrites.enabled_rewrites.field.change(function () {
@@ -302,6 +303,15 @@ class ApiRewrites {
 		},
 		hide_error() {
 			ApiRewrites.api_key.field.parent().find('.error').html('').hide();
+		}
+	}
+	static override_existing_responses = {
+		field: jQuery('#aspireupdate-settings-field-override_existing_responses'),
+		show() {
+			ApiRewrites.override_existing_responses.field.parent().parent().parent().show();
+		},
+		hide() {
+			ApiRewrites.override_existing_responses.field.parent().parent().parent().hide();
 		}
 	}
 }
