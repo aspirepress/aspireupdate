@@ -239,6 +239,9 @@ trait API {
 	 */
 	final public static function ratelimit_reset( $response, $repo ) {
 		$headers = wp_remote_retrieve_headers( $response );
+		if ( empty( $headers ) ) {
+			return 60;
+		}
 		$data    = $headers->getAll();
 		$wait    = 0;
 		if ( isset( $data['x-ratelimit-reset'] ) ) {

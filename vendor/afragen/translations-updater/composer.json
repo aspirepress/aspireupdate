@@ -3,7 +3,7 @@
   "description": "This framework provides automatic decoupled languate pack updates from a public repository for your WordPress plugin or theme.",
   "type": "library",
   "license": "MIT",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "wordpress",
     "plugin",

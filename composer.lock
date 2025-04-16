@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7448633c3996d4a87ee3d1dc583ecf00",
+    "content-hash": "1d615a33e2ad13f09c7ec219d8343465",
     "packages": [
         {
             "name": "afragen/autoloader",
@@ -108,16 +108,16 @@
         },
         {
             "name": "afragen/translations-updater",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/afragen/translations-updater.git",
-                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e"
+                "reference": "80290fe8eeef1dbaca21baea782b152d1a0e0a8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/afragen/translations-updater/zipball/c688e85eeef136f9cd7a4719db94ab0fc241601e",
-                "reference": "c688e85eeef136f9cd7a4719db94ab0fc241601e",
+                "url": "https://api.github.com/repos/afragen/translations-updater/zipball/80290fe8eeef1dbaca21baea782b152d1a0e0a8c",
+                "reference": "80290fe8eeef1dbaca21baea782b152d1a0e0a8c",
                 "shasum": ""
             },
             "require": {
@@ -157,7 +157,7 @@
                 "issues": "https://github.com/afragen/translations-updater/issues",
                 "source": "https://github.com/afragen/translations-updater"
             },
-            "time": "2024-11-19T17:24:59+00:00"
+            "time": "2025-04-16T16:51:43+00:00"
         }
     ],
     "packages-dev": [
@@ -2304,16 +2304,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.2.1",
+            "version": "v7.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "fefcc18c0f5d0efe3ab3152f15857298868dc2c3"
+                "reference": "e51498ea18570c062e7df29d05a7003585b19b88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/fefcc18c0f5d0efe3ab3152f15857298868dc2c3",
-                "reference": "fefcc18c0f5d0efe3ab3152f15857298868dc2c3",
+                "url": "https://api.github.com/repos/symfony/console/zipball/e51498ea18570c062e7df29d05a7003585b19b88",
+                "reference": "e51498ea18570c062e7df29d05a7003585b19b88",
                 "shasum": ""
             },
             "require": {
@@ -2377,7 +2377,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.2.1"
+                "source": "https://github.com/symfony/console/tree/v7.2.5"
             },
             "funding": [
                 {
@@ -2393,7 +2393,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-11T03:49:26+00:00"
+            "time": "2025-03-12T08:11:12+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
