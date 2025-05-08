@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['7.4', '8.3']
+        php-version: ['7.4', '8.4']
         multisite: [ true, false ]
     services:
       database:
