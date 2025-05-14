@@ -646,7 +646,8 @@ class Admin_Settings {
 			case 'api-key':
 				?>
 					<input type="text" id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $options[ $id ] ?? '' ); ?>" class="regular-text" aria-describedby="<?php echo esc_attr( $description_id ); ?>" />
-					<input type="button" id="aspireupdate-generate-api-key" value="Generate API Key" title="<?php esc_attr_e( 'Generate API Key', 'aspireupdate' ); ?>" />
+					<input type="button" id="aspireupdate-generate-api-key" value="Generate API Key" />
+					<label for="aspireupdate-generate-api-key"><?php esc_html_e( 'Generate API Key', 'aspireupdate' ); ?></label>
 					<p class="error"></p>
 					<?php
 				break;
