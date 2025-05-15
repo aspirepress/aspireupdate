@@ -185,19 +185,25 @@
 }
 
 #voltron:hover {
-	animation: blink 1.8s ease-in-out infinite;
-	animation-delay: 5s;
+	animation: blink 1.8s ease-in-out 5s infinite;
+}
+
+@media (prefers-reduced-motion) {
+	#voltron:hover {
+		animation-duration: 10s;
+		animation-iteration-count: 1;
+	}
 }
 
 @keyframes blink {
 
 	0%,
 	100% {
-		color: inherit;
+		color: transparent;
 	}
 
 	50% {
-		color: transparent;
+		color: inherit;
 	}
 }
 
