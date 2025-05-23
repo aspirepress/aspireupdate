@@ -129,8 +129,6 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 
 	/**
 	 * Test that the default host is replaced with the redirected host.
-	 *
-	 * @covers \AspireUpdate\API_Rewrite::add_cache_buster
 	 */
 	public function test_should_replace_default_host_with_redirected_host() {
 		$actual = '';
@@ -148,7 +146,63 @@ class APIRewrite_PreHttpRequestTest extends WP_UnitTestCase {
 		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
 		$api_rewrite->pre_http_request( false, [], 'https://' . $this->get_default_host() );
 
-		$this->assertMatchesRegularExpression( '/my\.api\.org\?cache_buster=[0-9]+/', $actual );
+		$this->assertMatchesRegularExpression( '/my\.api\.org/', $actual );
+	}
+
+	/**
+	 * Test that cache buster is added to URL when AP_DEBUG_BYPASS_CACHE is true.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 *
+	 * @covers \AspireUpdate\API_Rewrite::add_cache_buster
+	 */
+	public function test_should_add_cache_buster_when_debug_bypass_cache_is_true() {
+		define( 'AP_DEBUG_BYPASS_CACHE', true );
+
+		$actual = '';
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( &$actual ) {
+				$actual = $url;
+				return $response;
+			},
+			PHP_INT_MAX,
+			3
+		);
+
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
+		$api_rewrite->pre_http_request( false, [], 'https://' . $this->get_default_host() );
+
+		$this->assertMatchesRegularExpression( '/\?cache_buster=[0-9]+/', $actual );
+	}
+
+	/**
+	 * Test that cache buster is _not_ added to URL when AP_DEBUG_BYPASS_CACHE is false.
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function test_should_not_add_cache_buster_when_debug_bypass_cache_is_false() {
+		define( 'AP_DEBUG_BYPASS_CACHE', false );
+
+		$actual = '';
+
+		add_filter(
+			'pre_http_request',
+			static function ( $response, $parsed_args, $url ) use ( &$actual ) {
+				$actual = $url;
+				return $response;
+			},
+			PHP_INT_MAX,
+			3
+		);
+
+		$api_rewrite = new AspireUpdate\API_Rewrite( 'https://my.api.org', true, '' );
+		$api_rewrite->pre_http_request( false, [], 'https://' . $this->get_default_host() );
+
+		$this->assertStringNotContainsString( 'cache_buster=', $actual );
 	}
 
 	/**
