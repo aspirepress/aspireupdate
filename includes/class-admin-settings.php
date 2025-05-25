@@ -437,15 +437,15 @@ class Admin_Settings {
 
 		add_settings_field(
 			'enable',
-			esc_html__( 'Enable AspireUpdate API Rewrites', 'aspireupdate' ),
+			esc_html__( 'API Rewriting', 'aspireupdate' ),
 			[ $this, 'add_settings_field_callback' ],
 			'aspireupdate-settings',
 			'aspireupdate_settings_section',
 			[
-				'id'        => 'enable',
-				'type'      => 'checkbox',
-				'data'      => $options,
-				'label_for' => 'aspireupdate-settings-field-enable',
+				'id'    => 'enable',
+				'type'  => 'checkbox',
+				'data'  => $options,
+				'label' => esc_html__( 'Rewrite API requests', 'aspireupdate' ),
 			]
 		);
 
@@ -456,12 +456,11 @@ class Admin_Settings {
 			'aspireupdate-settings',
 			'aspireupdate_settings_section',
 			[
-				'id'          => 'api_host',
-				'type'        => 'hosts',
-				'data'        => $options,
-				'description' => esc_html__( 'Your new API Host. Ensure that it starts with http:// or https://', 'aspireupdate' ),
-				'label_for'   => 'aspireupdate-settings-field-api_host',
-				'options'     => [
+				'id'        => 'api_host',
+				'type'      => 'hosts',
+				'data'      => $options,
+				'label_for' => 'aspireupdate-settings-field-api_host',
+				'options'   => [
 					[
 						'value'           => 'https://api.aspirecloud.net',
 						'label'           => sprintf(
@@ -501,25 +500,24 @@ class Admin_Settings {
 				'id'          => 'api_key',
 				'type'        => 'api-key',
 				'data'        => $options,
-				'description' => esc_html__( 'Provides an API key for repositories that may require authentication.', 'aspireupdate' ),
+				'description' => esc_html__( 'Some repositories may require an API key for authentication.', 'aspireupdate' ),
 				'label_for'   => 'aspireupdate-settings-field-api_key',
 			]
 		);
 
 		add_settings_field(
 			'compatibility',
-			esc_html__( 'Compatibility', 'aspireupdate' ),
+			'<span id="compatibility-field-group-label">' . esc_html__( 'Compatibility', 'aspireupdate' ) . '</span>',
 			[ $this, 'add_settings_field_callback' ],
 			'aspireupdate-settings',
 			'aspireupdate_settings_section',
 			[
-				'id'          => 'compatibility',
-				'type'        => 'checkbox-group',
-				'data'        => $options,
-				'options'     => [
+				'id'      => 'compatibility',
+				'type'    => 'checkbox-group',
+				'data'    => $options,
+				'options' => [
 					'skip_rewriting_on_existing_response' => esc_html__( 'Skip API rewriting if another plugin already appears to be rewriting API requests', 'aspireupdate' ),
 				],
-				'description' => esc_html__( 'Increase compatibility with other plugins.', 'aspireupdate' ),
 			]
 		);
 
@@ -536,51 +534,48 @@ class Admin_Settings {
 
 		add_settings_field(
 			'enable_debug',
-			esc_html__( 'Enable Debug Mode', 'aspireupdate' ),
+			esc_html__( 'Debug Mode', 'aspireupdate' ),
 			[ $this, 'add_settings_field_callback' ],
 			'aspireupdate-settings',
 			'aspireupdate_debug_settings_section',
 			[
-				'id'          => 'enable_debug',
-				'type'        => 'checkbox',
-				'data'        => $options,
-				'description' => esc_html__( 'Enables debug mode for the plugin.', 'aspireupdate' ),
-				'label_for'   => 'aspireupdate-settings-field-enable_debug',
+				'id'    => 'enable_debug',
+				'type'  => 'checkbox',
+				'data'  => $options,
+				'label' => esc_html__( 'Enable logging and other debugging functionality', 'aspireupdate' ),
 			]
 		);
 
 		add_settings_field(
 			'enable_debug_type',
-			esc_html__( 'Enable Debug Type', 'aspireupdate' ),
+			'<span id="enable_debug_type-field-group-label">' . esc_html__( 'Log Contents', 'aspireupdate' ) . '</span>',
 			[ $this, 'add_settings_field_callback' ],
 			'aspireupdate-settings',
 			'aspireupdate_debug_settings_section',
 			[
-				'id'          => 'enable_debug_type',
-				'type'        => 'checkbox-group',
-				'data'        => $options,
-				'options'     => [
-					'request'  => esc_html__( 'Request', 'aspireupdate' ),
-					'response' => esc_html__( 'Response', 'aspireupdate' ),
-					'string'   => esc_html__( 'String', 'aspireupdate' ),
+				'id'      => 'enable_debug_type',
+				'type'    => 'checkbox-group',
+				'data'    => $options,
+				'options' => [
+					'request'  => esc_html__( 'Include request arguments', 'aspireupdate' ),
+					'response' => esc_html__( 'Include response headers and body', 'aspireupdate' ),
+					'string'   => esc_html__( 'Include a simple description of each step in the rewriting process', 'aspireupdate' ),
 				],
-				'description' => esc_html__( 'Outputs the request URL and headers / response headers and body / string that is being rewritten.', 'aspireupdate' ),
 			]
 		);
 
 		add_settings_field(
 			'disable_ssl_verification',
-			esc_html__( 'Disable SSL Verification', 'aspireupdate' ),
+			esc_html__( 'SSL Verification', 'aspireupdate' ),
 			[ $this, 'add_settings_field_callback' ],
 			'aspireupdate-settings',
 			'aspireupdate_debug_settings_section',
 			[
-				'id'          => 'disable_ssl_verification',
-				'type'        => 'checkbox',
-				'data'        => $options,
-				'class'       => 'advanced-setting',
-				'description' => esc_html__( 'Disables the verification of SSL to allow local testing.', 'aspireupdate' ),
-				'label_for'   => 'aspireupdate-settings-field-disable_ssl_verification',
+				'id'    => 'disable_ssl_verification',
+				'type'  => 'checkbox',
+				'data'  => $options,
+				'class' => 'advanced-setting',
+				'label' => esc_html__( 'Disable SSL verification to allow for local testing', 'aspireupdate' ),
 			]
 		);
 	}
@@ -615,46 +610,94 @@ class Admin_Settings {
 		switch ( $type ) {
 			case 'text':
 				?>
-					<input type="text" id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $options[ $id ] ?? '' ); ?>" class="regular-text" aria-describedby="<?php echo esc_attr( $description_id ); ?>" />
+					<input
+						type="text"
+						id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>"
+						name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]"
+						value="<?php echo esc_attr( $options[ $id ] ?? '' ); ?>"
+						class="regular-text"
+						<?php if ( $description ) : ?>
+							aria-describedby="<?php echo esc_attr( $description_id ); ?>"
+						<?php endif; ?>
+					/>
+					<p class="description" id="<?php echo esc_attr( $description_id ); ?>"><?php echo esc_html( $description ); ?></p>
 					<?php
 				break;
 
 			case 'textarea':
 				?>
-					<textarea id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" rows="5" cols="50" aria-describedby="<?php echo esc_attr( $description_id ); ?>"><?php echo esc_textarea( $options[ $id ] ?? '' ); ?></textarea>
+					<textarea
+						id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>"
+						name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]"
+						rows="5"
+						cols="50"
+						<?php if ( $description ) : ?>
+							aria-describedby="<?php echo esc_attr( $description_id ); ?>"
+						<?php endif; ?>
+					>
+						<?php echo esc_textarea( $options[ $id ] ?? '' ); ?>
+					</textarea>
+					<p class="description" id="<?php echo esc_attr( $description_id ); ?>"><?php echo esc_html( $description ); ?></p>
 					<?php
 				break;
 
 			case 'checkbox':
 				?>
-					<input type="checkbox" id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" value="1" <?php checked( 1, $options[ $id ] ?? 0 ); ?> aria-describedby="<?php echo esc_attr( $description_id ); ?>" />
+					<input
+						type="checkbox"
+						id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>"
+						name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]"
+						value="1"
+						<?php checked( 1, $options[ $id ] ?? 0 ); ?>
+					/>
+					<?php if ( isset( $args['label'] ) ) : ?>
+						<label for="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>">
+							<?php echo esc_html( $args['label'] ); ?>
+						</label>
+					<?php endif; ?>
 					<?php
 				break;
 
 			case 'checkbox-group':
-				foreach ( $group_options as $key => $label ) {
-					?>
+				?>
+				<div role="group" aria-labelledby="<?php echo esc_attr( $id ); ?>-field-group-label">
+				<?php foreach ( $group_options as $key => $label ) : ?>
+					<?php $item_id = "aspireupdate-settings-field-{$id}-{$key}"; ?>
 					<p>
-						<label>
-							<input type="checkbox" id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>-<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( 1, $options[ $id ][ $key ] ?? 0 ); ?> /> <?php echo esc_html( $label ); ?>
-						</label>
+						<input type="checkbox" id="<?php echo esc_attr( $item_id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( 1, $options[ $id ][ $key ] ?? 0 ); ?> />
+						<label for="<?php echo esc_attr( $item_id ); ?>"><?php echo esc_html( $label ); ?></label>
 					</p>
-					<?php
-				}
+				<?php endforeach; ?>
+				</div>
+				<?php
 				break;
 
 			case 'api-key':
 				?>
-					<input type="text" id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $options[ $id ] ?? '' ); ?>" class="regular-text" aria-describedby="<?php echo esc_attr( $description_id ); ?>" />
-					<input type="button" id="aspireupdate-generate-api-key" value="Generate API Key" />
-					<label for="aspireupdate-generate-api-key"><?php esc_html_e( 'Generate API Key', 'aspireupdate' ); ?></label>
-					<p class="error"></p>
+					<input
+						type="text"
+						id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>"
+						name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]"
+						value="<?php echo esc_attr( $options[ $id ] ?? '' ); ?>"
+						class="regular-text"
+						aria-describedby="aspireupdate-api-key-notice <?php echo $description ? esc_attr( $description_id ) : ''; ?>"
+					/>
+					<button id="aspireupdate-generate-api-key" class="button button-secondary">
+						<span class="dashicons dashicons-admin-network" aria-hidden="true"></span>
+						<span><?php esc_html_e( 'Generate API Key', 'aspireupdate' ); ?></span>
+					</button>
+					<p id="<?php echo esc_attr( $description_id ); ?>"><?php echo esc_html( $description ); ?></p>
+					<div id="aspireupdate-api-key-notice"></div>
 					<?php
 				break;
 
 			case 'hosts':
 				?>
-				<select id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]" class="regular-text" aria-describedby="<?php echo esc_attr( $description_id ); ?>">
+				<select
+					id="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>"
+					name="<?php echo esc_attr( $this->option_name ); ?>[<?php echo esc_attr( $id ); ?>]"
+					class="regular-text"
+				>
 					<?php
 					foreach ( $group_options as $group_option ) {
 						?>
@@ -671,6 +714,9 @@ class Admin_Settings {
 					?>
 				</select>
 				<p>
+					<label for="aspireupdate-settings-field-<?php echo esc_attr( $id ); ?>_other">
+						<?php esc_html_e( 'Enter a custom API host. Ensure that it starts with https://.', 'aspireupdate' ); ?>
+					</label><br>
 					<input
 						type="url"
 						data-pattern="(https?)://.*"
@@ -683,7 +729,7 @@ class Admin_Settings {
 				<?php
 				break;
 		}
-		echo '<p class="description" id="' . esc_attr( $description_id ) . '">' . esc_html( $description ) . '</p>';
+
 		echo '</div>';
 	}
 

@@ -17,21 +17,9 @@
 }
 
 #aspireupdate-generate-api-key {
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	background: url(../images/icon-key.svg) no-repeat center center / 24px 24px;
-	background-color: #cbcbcb;
-	border: 1px solid #8c8f94;
-	border-radius: 3px;
-	clip-path: inset(0 0 0 0);
-	color: transparent;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-#aspireupdate-generate-api-key:hover {
-	background-color: #e3e3e3;
+	display: inline-flex;
+	align-items: center;
+	gap: .5em;
 }
 
 .aspireupdate-settings-field-wrapper p.error {

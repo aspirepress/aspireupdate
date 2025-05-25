@@ -9,10 +9,12 @@ jQuery(document).ready(function () {
 
 class AdminNotice {
 	static add(message, args) {
+		wp = window.wp || {};
 		args = {
 			type: args.type || 'info',
 			dismissible: typeof args.dismissible !== 'undefined' ? args.dismissible : true,
-			id: args.id || 'aspireupdate-notice'
+			id: args.id || 'aspireupdate-notice',
+			previousSibling: args.previousSibling || jQuery('h1'),
 		};
 
 		let existingNotice = jQuery(`#${args.id}`);
@@ -25,8 +27,10 @@ class AdminNotice {
 		if (existingNotice.length > 0) {
 			existingNotice.replaceWith(adminNotice);
 		} else {
-			jQuery('h1').after(adminNotice);
+			jQuery(args.previousSibling).after(adminNotice);
 		}
+
+		wp.a11y.speak(message);
 
 		// Adds dismiss functionality to dismissible notices.
 		jQuery(document).trigger('wp-notice-added');
@@ -67,19 +71,31 @@ class ClearLog {
 					if (response.success) {
 						AdminNotice.add(
 							response.data.message,
-							{type: 'success', id: noticeId}
+							{
+								type: 'success',
+								id: noticeId,
+								previousSibling: ClearLog.clearlog_button.field.parent()
+							}
 						);
 					} else {
 						AdminNotice.add(
 							response.data.message || aspireupdate.unexpected_error,
-							{type: 'error', id: noticeId}
+							{
+								type: 'error',
+								id: noticeId,
+								previousSibling: ClearLog.clearlog_button.field.parent()
+							}
 						);
 					}
 				})
 				.fail(function (response) {
 					AdminNotice.add(
 						response.data.message || aspireupdate.unexpected_error,
-						{type: 'error', id: noticeId}
+						{
+							type: 'error',
+							id: noticeId,
+							previousSibling: ClearLog.clearlog_button.field.parent()
+						}
 					);
 				});
 		},
@@ -149,14 +165,22 @@ class ViewLog {
 					} else {
 						AdminNotice.add(
 							response.data.message || aspireupdate.unexpected_error,
-							{type: 'error', id: noticeId}
+							{
+								type: 'error',
+								id: noticeId,
+								previousSibling: ViewLog.viewlog_button.field.parent()
+							}
 						);
 					}
 				})
 				.fail(function (response) {
 					AdminNotice.add(
 						response.data.message || aspireupdate.unexpected_error,
-						{type: 'error', id: noticeId}
+						{
+							type: 'error',
+							id: noticeId,
+							previousSibling: ViewLog.viewlog_button.field.parent()
+						}
 					);
 				});
 		},
@@ -255,11 +279,9 @@ class ApiRewrites {
 	static other_hosts = {
 		field: jQuery('#aspireupdate-settings-field-api_host_other'),
 		init() {
-			ApiRewrites.other_hosts.field.on("blur", function (event) {
+			ApiRewrites.other_hosts.field.on("blur", function () {
 				let parent = ApiRewrites.other_hosts.field.parent();
-				let value = ApiRewrites.other_hosts.field.val();
 				let current_field = ApiRewrites.other_hosts.field.get(0);
-				console.log(current_field.checkValidity());
 				current_field.setCustomValidity("");
 				if (parent.is(":visible") && !current_field.checkValidity()) {
 					current_field.setCustomValidity(aspireupdate.api_host_other_error);
@@ -269,9 +291,7 @@ class ApiRewrites {
 		},
 		show() {
 			ApiRewrites.other_hosts.field.parent().show();
-			ApiRewrites.other_hosts.field.focus();
 			ApiRewrites.other_hosts.make_required();
-			ApiRewrites.other_hosts.field.get(0).reportValidity();
 		},
 		hide() {
 			ApiRewrites.other_hosts.field.get(0).setCustomValidity("");
@@ -295,13 +315,11 @@ class ApiRewrites {
 	static api_key = {
 		field: jQuery('#aspireupdate-settings-field-api_key'),
 		action_button: jQuery('#aspireupdate-generate-api-key'),
-		action_button_label: jQuery('label[for="aspireupdate-generate-api-key"]'),
 		init() {
-			ApiRewrites.api_key.action_button.click(function () {
-				ApiRewrites.api_key.hide_error();
+			ApiRewrites.api_key.action_button.click(function (e) {
+				e.preventDefault();
 				ApiRewrites.api_key.get_api_key();
 			});
-			ApiRewrites.api_key.hide_error();
 		},
 		get_api_key() {
 			let parameters = {
@@ -312,15 +330,30 @@ class ApiRewrites {
 					"domain": aspireupdate.domain
 				})
 			};
+			let noticeId = 'aspireupdate-api-key-notice';
 			jQuery.ajax(parameters)
 				.done(function (response) {
 					ApiRewrites.api_key.field.val(response.apikey);
 				})
 				.fail(function (response) {
 					if ((response.status === 400) || (response.status === 401)) {
-						ApiRewrites.api_key.show_error(response.responseJSON?.error);
+						AdminNotice.add(
+							response.responseJSON?.error,
+							{
+								type: 'error',
+								id: noticeId,
+								previousSibling: ApiRewrites.api_key.field.parent().find(':last'),
+							}
+						);
 					} else {
-						ApiRewrites.api_key.show_error(aspireupdate.unexpected_error + ' : ' + response.status);
+						AdminNotice.add(
+							aspireupdate.unexpected_error + ' : ' + response.status,
+							{
+								type: 'error',
+								id: noticeId,
+								previousSibling: ApiRewrites.api_key.field.parent().find(':last'),
+							}
+						);
 					}
 				});
 		},
@@ -332,23 +365,15 @@ class ApiRewrites {
 		},
 		show_action_button() {
 			ApiRewrites.api_key.action_button.show();
-			ApiRewrites.api_key.action_button_label.show();
 		},
 		hide_action_button() {
 			ApiRewrites.api_key.action_button.hide();
-			ApiRewrites.api_key.action_button_label.hide();
 		},
 		make_required() {
 			ApiRewrites.api_key.field.prop('required', true);
 		},
 		remove_required() {
 			ApiRewrites.api_key.field.prop('required', false);
-		},
-		show_error(message) {
-			ApiRewrites.api_key.field.parent().find('.error').html(message).show();
-		},
-		hide_error() {
-			ApiRewrites.api_key.field.parent().find('.error').html('').hide();
 		}
 	}
 	static compatibility = {
