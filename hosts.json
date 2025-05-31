@@ -7,13 +7,11 @@
 	{
 		"url": "https://api.aspirecloud.net",
 		"label": "AspireCloud",
-		"api-key-url": "https://api.aspirecloud.net/v1/apitoken",
 		"require-api-key": false
 	},
 	{
 		"url": "https://api.aspirecloud.io",
 		"label": "AspireCloud Bleeding Edge",
-		"api-key-url": "https://api.aspirecloud.io/v1/apitoken",
 		"require-api-key": false
 	},
 	{
