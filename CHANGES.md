@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 1.0.2
+* Dependencies: Updated Git Updater Lite to version 2.3.3.
+
 #### 1.0.1
 * Assets: Added plugin icon and banner files.
 * Dependencies: Updated Git Updater Lite to version 2.3.2.
