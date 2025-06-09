@@ -1,5 +1,11 @@
 [unreleased]
 
+#### 1.0.1
+* Assets: Added plugin icon and banner files.
+* Dependencies: Updated Git Updater Lite to version 2.3.2.
+* Dependencies: Updated PHP Parser to version 5.5.0.
+* Workflows: Changed the Playground workflow to manual-only.
+
 #### 1.0
 * Removed the Aspire Cloud Bleeding Edge Endpoint from Hosts List.
 
