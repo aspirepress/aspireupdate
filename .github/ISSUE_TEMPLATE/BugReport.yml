@@ -31,8 +31,7 @@ body:
       label: Version
       description: What version of AspireUpdate are you running?
       options:
-        - 0.5 (Default)
-        - 1.0
+        - 1.0.1 (Latest)
         - Nightly
       default: 0
     validations:

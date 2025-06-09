@@ -17,7 +17,7 @@
 		"blogname": "AspireUpdate Demo Site"
 	},
 	"plugins": [
-		"https://github-proxy.com/proxy/?repo=AspirePress/AspireUpdate&branch=main",
+		"https://github-proxy.com/proxy/?repo=AspirePress/AspireUpdate&release=1.0.1",
 		"error-log-viewer",
 		"plugin-check"
 	],
