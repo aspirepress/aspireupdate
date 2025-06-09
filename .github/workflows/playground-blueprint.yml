@@ -1,11 +1,7 @@
 name: Update Playground Blueprint with Repository and Branch
 
 on:
-  push:
-    branches:
-      - playground-ready
-    tags:
-      - "**"
+  workflow_dispatch:
 
 permissions:
   contents: read
