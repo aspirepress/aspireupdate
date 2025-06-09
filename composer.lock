@@ -49,16 +49,16 @@
         },
         {
             "name": "afragen/git-updater-lite",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/afragen/git-updater-lite.git",
-                "reference": "adc8d8bbc4c1cfe8adada9e810215985762bc6ce"
+                "reference": "5880aa6dfe9427a47929985daf5f6313349c1c9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/afragen/git-updater-lite/zipball/adc8d8bbc4c1cfe8adada9e810215985762bc6ce",
-                "reference": "adc8d8bbc4c1cfe8adada9e810215985762bc6ce",
+                "url": "https://api.github.com/repos/afragen/git-updater-lite/zipball/5880aa6dfe9427a47929985daf5f6313349c1c9f",
+                "reference": "5880aa6dfe9427a47929985daf5f6313349c1c9f",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
             ],
             "support": {
                 "issues": "https://github.com/afragen/git-updater-lite/issues",
-                "source": "https://github.com/afragen/git-updater-lite/tree/2.3.2"
+                "source": "https://github.com/afragen/git-updater-lite/tree/2.3.3"
             },
             "funding": [
                 {
@@ -104,7 +104,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-09T15:41:19+00:00"
+            "time": "2025-06-09T17:27:37+00:00"
         },
         {
             "name": "afragen/translations-updater",
