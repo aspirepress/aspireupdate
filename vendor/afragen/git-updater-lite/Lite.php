@@ -112,11 +112,14 @@ if ( ! class_exists( 'Fragen\\Git_Updater\\Lite' ) ) {
 			if ( empty( $this->update_server ) || is_wp_error( $this->update_server ) ) {
 				return new \WP_Error( 'invalid_domain', 'Invalid update server domain', $this->update_server );
 			}
-			$url      = "$this->update_server/wp-json/git-updater/v1/update-api/?slug=$this->slug";
+			$url      = add_query_arg(
+				array( 'slug', $this->slug ),
+				sprintf( '%s/wp-json/git-updater/v1/update-api/', $this->update_server )
+			);
 			$response = get_site_transient( "git-updater-lite_{$this->file}" );
 			if ( ! $response ) {
 				$response = wp_remote_post( $url );
-				if ( is_wp_error( $response ) ) {
+				if ( is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 404 ) {
 					return $response;
 				}
 
@@ -172,7 +175,7 @@ if ( ! class_exists( 'Fragen\\Git_Updater\\Lite' ) ) {
 		/**
 		 * Correctly rename dependency for activation.
 		 *
-		 * @param string                           $source        Path fo $source.
+		 * @param string                           $source        Path of $source.
 		 * @param string                           $remote_source Path of $remote_source.
 		 * @param \Plugin_Upgrader|\Theme_Upgrader $upgrader      An Upgrader object.
 		 * @param array                            $hook_extra    Array of hook data.
