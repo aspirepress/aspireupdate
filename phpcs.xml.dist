@@ -45,6 +45,9 @@
 	<!-- Translation files. -->
 	<exclude-pattern>/languages/*</exclude-pattern>
 
+	<!-- Exclude executable and script files from all sniffs. -->
+	<exclude-pattern>/bin/*</exclude-pattern>
+
 	<!--
 	#############################################################################
 	SET UP THE RULESET

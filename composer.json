@@ -1,69 +1,70 @@
 {
-    "name": "aspirepress/aspireupdate",
-    "description": "Update plugins and themes for WordPress.",
-    "type": "wordpress-plugin",
-    "license": "GPLv2",
-    "authors": [
-        {
-            "name": "AspirePress"
-        }
-    ],
-    "require": {
-        "php": ">=7.4.0",
-        "afragen/autoloader": "dev-master",
-        "afragen/translations-updater": "^1",
-        "afragen/git-updater-lite": "^2"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "3.10.3",
-        "wp-coding-standards/wpcs": "~3.1.0",
-        "yoast/phpunit-polyfills": "^1.1.0",
-        "nimut/phpunit-merger": "^2.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "scripts": {
-        "format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
-        "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source",
-        "test": [
-            "Composer\\Config::disableProcessTimeout",
-            "@php ./vendor/phpunit/phpunit/phpunit"
-        ],
-        "test:multisite": [
-            "Composer\\Config::disableProcessTimeout",
-            "@php ./vendor/phpunit/phpunit/phpunit -c tests/phpunit/multisite.xml"
-        ],
-        "coverage:merge": [
-            "Composer\\Config::disableProcessTimeout",
-            "@putenv XDEBUG_MODE=coverage",
-            "@php ./vendor/bin/phpunit-merger coverage tests/phpunit/coverage/php --html tests/phpunit/coverage/html/full tests/phpunit/cache/full-cache.xml"
-        ],
-        "coverage:single": [
-            "Composer\\Config::disableProcessTimeout",
-            "@putenv XDEBUG_MODE=off",
-            "@putenv WP_TESTS_SKIP_INSTALL=0",
-            "@test --filter prime_test_suite",
-            "@putenv XDEBUG_MODE=coverage",
-            "@putenv WP_TESTS_SKIP_INSTALL=1",
-            "@test"
-        ],
-        "coverage:multisite": [
-            "Composer\\Config::disableProcessTimeout",
-            "@putenv XDEBUG_MODE=off",
-            "@putenv WP_TESTS_SKIP_INSTALL=0",
-            "@test:multisite --filter prime_test_suite",
-            "@putenv XDEBUG_MODE=coverage",
-            "@putenv WP_TESTS_SKIP_INSTALL=1",
-            "@test:multisite"
-        ],
-        "coverage:full": [
-            "Composer\\Config::disableProcessTimeout",
-            "@coverage:single",
-            "@coverage:multisite",
-            "@coverage:merge"
-        ]
-    }
+	"name": "aspirepress/aspireupdate",
+	"description": "Update plugins and themes for WordPress.",
+	"type": "wordpress-plugin",
+	"license": "GPLv2",
+	"authors": [
+		{
+			"name": "AspirePress"
+		}
+	],
+	"require": {
+		"php": ">=7.4.0",
+		"afragen/autoloader": "dev-master",
+		"afragen/translations-updater": "^1",
+		"afragen/git-updater-lite": "^2"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "3.10.3",
+		"wp-coding-standards/wpcs": "~3.1.0",
+		"yoast/phpunit-polyfills": "^1.1.0",
+		"nimut/phpunit-merger": "^2.0",
+		"wp-cli/wp-cli-bundle": "^2.12"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source",
+		"test": [
+			"Composer\\Config::disableProcessTimeout",
+			"@php ./vendor/phpunit/phpunit/phpunit"
+		],
+		"test:multisite": [
+			"Composer\\Config::disableProcessTimeout",
+			"@php ./vendor/phpunit/phpunit/phpunit -c tests/phpunit/multisite.xml"
+		],
+		"coverage:merge": [
+			"Composer\\Config::disableProcessTimeout",
+			"@putenv XDEBUG_MODE=coverage",
+			"@php ./vendor/bin/phpunit-merger coverage tests/phpunit/coverage/php --html tests/phpunit/coverage/html/full tests/phpunit/cache/full-cache.xml"
+		],
+		"coverage:single": [
+			"Composer\\Config::disableProcessTimeout",
+			"@putenv XDEBUG_MODE=off",
+			"@putenv WP_TESTS_SKIP_INSTALL=0",
+			"@test --filter prime_test_suite",
+			"@putenv XDEBUG_MODE=coverage",
+			"@putenv WP_TESTS_SKIP_INSTALL=1",
+			"@test"
+		],
+		"coverage:multisite": [
+			"Composer\\Config::disableProcessTimeout",
+			"@putenv XDEBUG_MODE=off",
+			"@putenv WP_TESTS_SKIP_INSTALL=0",
+			"@test:multisite --filter prime_test_suite",
+			"@putenv XDEBUG_MODE=coverage",
+			"@putenv WP_TESTS_SKIP_INSTALL=1",
+			"@test:multisite"
+		],
+		"coverage:full": [
+			"Composer\\Config::disableProcessTimeout",
+			"@coverage:single",
+			"@coverage:multisite",
+			"@coverage:merge"
+		]
+	}
 }

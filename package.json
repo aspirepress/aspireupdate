@@ -1,29 +1,29 @@
 {
-  "name": "aspire-update",
-  "version": "1.0.2",
-  "description": "This plugin allows a WordPress user to automatically rewrite certain URLs and URL paths to a new URL. This is helpful because it allows for the rewriting of `api.wordpress.org` to some other repository that contains the plugins the user wants.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aspirepress/aspireupdate.git"
-  },
-  "keywords": [],
-  "author": "AspireUpdate",
-  "license": "GPLv2",
-  "bugs": {
-    "url": "https://github.com/aspirepress/aspireupdate/issues"
-  },
-  "homepage": "https://github.com/aspirepress/aspireupdate#readme",
-  "scripts": {
-    "wp-env": "wp-env",
-    "env:start": "wp-env start",
-    "env:stop": "wp-env stop",
-    "env:clean": "wp-env clean",
-    "env:destroy": "wp-env destroy",
-    "test:e2e": "npx playwright test --config=./tests/e2e/playwright.config.ts"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.50.1",
-    "@wordpress/env": "^10.18.0",
-    "dotenv": "^16.4.7"
-  }
+    "name": "aspire-update",
+    "version": "1.0.2",
+    "description": "This plugin allows a WordPress user to automatically rewrite certain URLs and URL paths to a new URL. This is helpful because it allows for the rewriting of `api.wordpress.org` to some other repository that contains the plugins the user wants.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aspirepress/aspireupdate.git"
+    },
+    "keywords": [],
+    "author": "AspireUpdate",
+    "license": "GPLv2",
+    "bugs": {
+        "url": "https://github.com/aspirepress/aspireupdate/issues"
+    },
+    "homepage": "https://github.com/aspirepress/aspireupdate#readme",
+    "scripts": {
+        "wp-env": "wp-env",
+        "env:start": "wp-env start",
+        "env:stop": "wp-env stop",
+        "env:clean": "wp-env clean",
+        "env:destroy": "wp-env destroy",
+        "test:e2e": "npx playwright test --config=./tests/e2e/playwright.config.ts"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.50.1",
+        "@wordpress/env": "^10.18.0",
+        "dotenv": "^16.4.7"
+    }
 }
